@@ -73,7 +73,7 @@ internal class ReceiverDevice(private val wifiDirectManager: WifiDirectManager) 
                 }
               } catch (e: IOException) {
                 e.message?.let { message ->
-                  Log.e(TAG, message)
+                  Log.e(TAG, "I/O exception $message", e)
                 }
                 isTransferErrorFree = false
                 publishProgress(fileItemIndex, FileItem.FileStatus.ERROR)
@@ -84,7 +84,7 @@ internal class ReceiverDevice(private val wifiDirectManager: WifiDirectManager) 
       }
     } catch (e: IOException) {
       e.message?.let { message ->
-        Log.e(TAG, message)
+        Log.e(TAG, "I/O exception $message", e)
       }
       false // Returned when an error was encountered during transfer
     }
